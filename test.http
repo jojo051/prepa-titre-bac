@@ -13,7 +13,7 @@ GET {{server}}/contents/2
 GET {{server}}/users
 
 ### GET byId users
-GET {{server}}/users/1
+GET {{server}}/users/4
 
 ###POST users
 POST {{server}}/users
@@ -34,4 +34,4 @@ Content-Type: application/json
 }
 
 ###Delete userbyId
-DELETE {{server}}/users/8
+DELETE {{server}}/users/2
