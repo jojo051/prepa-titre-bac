@@ -11,9 +11,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 // PATH
+const categoriesRouter = require('./routers/categories-router')
+const boxesRouter = require('./routers/boxes-router')
+const bottlesRouter = require('./routers/bottles-router')
 const contentsRouter = require('./routers/contents-router');
 const usersRouter = require('./routers/users-router');
 
+app.use('/categories', authenticateWithJwt, categoriesRouter)
+app.use('/boxes', authenticateWithJwt, boxesRouter);
+app.use('/bottles', authenticateWithJwt, bottlesRouter);
 app.use('/contents', authenticateWithJwt, contentsRouter);
 app.use('/users', usersRouter);
 

@@ -1,3 +1,17 @@
+const extractCategorieId = (req, res, next) => {
+  req.categorieId = parseInt(req.params.categorieId);
+  next();
+};
+const extractboxId = (req, res, next) => {
+  req.boxId = parseInt(req.params.boxId);
+  next();
+};
+
+const extractBottleId = (req, res, next) => {
+  req.bottleId = parseInt(req.params.bottleId);
+  next();
+};
+
 const extractContentId = (req, res, next) => {
   req.contentId = parseInt(req.params.contentId);
   next();
@@ -50,4 +64,7 @@ module.exports = {
   extractDataId, 
   extractUserRegisterData,
   extractUserLogin,
+  extractBottleId,
+  extractboxId,
+  extractCategorieId,
 };
