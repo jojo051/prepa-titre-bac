@@ -1,7 +1,7 @@
-const Categorie = require('../models/Categorie');
+const Categorie = require('../models/Category');
 
 const getAllCategories = (req, res, next) => {
-  Categorie.getAll((err, results) => {
+  Category.getAll((err, results) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -13,8 +13,8 @@ const getAllCategories = (req, res, next) => {
   });
 };
 
-const findCategorieById = (req, res, next) => {
-  Categorie.findById(req.categorieId, (err, results) => {
+const findCategoryById = (req, res, next) => {
+  Category.findById(req.categoryId, (err, results) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -26,9 +26,9 @@ const findCategorieById = (req, res, next) => {
   })
 };
 
-const postCategorie = (req, res, next) => {
+const postCategory = (req, res, next) => {
   const { formData } = req
-  Categorie.post(formData, (err, results) =>{
+  Category.post(formData, (err, results) =>{
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -40,9 +40,9 @@ const postCategorie = (req, res, next) => {
   })
 }
 
-const putCategorie = (req, res, next) => {
-  const { formData, categorieId } = req
-  Categorie.put( formData, categorieId, (err, results) =>{
+const putCategory = (req, res, next) => {
+  const { formData, categoryId } = req
+  Category.put( formData, categoryId, (err, results) =>{
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -55,8 +55,8 @@ const putCategorie = (req, res, next) => {
   })
 }
 
-const deleteCategorie = (req, res, next) => {
-  Categorie.delete(req.categorieId, (err, results) =>{
+const deleteCategory = (req, res, next) => {
+  Category.delete(req.categoryId, (err, results) =>{
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -70,8 +70,8 @@ const deleteCategorie = (req, res, next) => {
 
 module.exports = {
   getAllCategories, 
-  findCategorieById,
-  postCategorie,
-  putCategorie,
-  deleteCategorie
+  findCategoryById,
+  postCategory,
+  putCategory,
+  deleteCategory
 }

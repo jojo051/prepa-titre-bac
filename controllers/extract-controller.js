@@ -1,5 +1,9 @@
-const extractCategorieId = (req, res, next) => {
-  req.categorieId = parseInt(req.params.categorieId);
+const extractBoxCategory = (req, res, next) => {
+  req.formData = req.body;
+  next();
+
+const extractCategoryId = (req, res, next) => {
+  req.categoryId = parseInt(req.params.categoryId);
   next();
 };
 const extractboxId = (req, res, next) => {
@@ -66,5 +70,6 @@ module.exports = {
   extractUserLogin,
   extractBottleId,
   extractboxId,
-  extractCategorieId,
+  extractCategoryId,
+  extractBoxCategory,
 };

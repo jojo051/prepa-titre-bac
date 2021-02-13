@@ -2,17 +2,17 @@ const express = require('express');
 const categoriesRouter = express.Router();
 
 const { 
-  extractCategorieId,
+  extractCategoryId,
   extractData,
   extractDataId,
 } = require('../controllers/extract-controller');
 
 const { 
     getAllCategories, 
-    findCategorieById,
-    postCategorie,
-    putCategorie,
-    deleteCategorie 
+    findCategoryById,
+    postCategory,
+    putCategory,
+    deleteCategory 
 } = require('../controllers/categories-controller');
 
 const { 
@@ -24,8 +24,8 @@ const {
 } = require('../views/send-json');
 
 categoriesRouter.get('/', getAllCategories, send);
-categoriesRouter.get('/:categorieId',extractCategorieId, findCategorieById, sendIfExists);
-categoriesRouter.delete('/:categorieId', findCategorieById, deleteCategorie, sendDeleted);
-categoriesRouter.post('/',extractData, postCategorie, sendPost);
-categoriesRouter.put('/:categorieId',extractDataId,putCategorie,sendPutModified);
+categoriesRouter.get('/:categoryId',extractCategoryId, findCategoryById, sendIfExists);
+categoriesRouter.delete('/:categoryId', findCategoryById, deleteCategory, sendDeleted);
+categoriesRouter.post('/',extractData, postCategory, sendPost);
+categoriesRouter.put('/:categoryId',extractDataId,putCategory,sendPutModified);
 module.exports = categoriesRouter;
