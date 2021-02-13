@@ -1,13 +1,49 @@
 @server = http://localhost:8000
+@barrer = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTMyNDEyNjksImV4cCI6MTYxMzMyNzY2OX0.bfUTOjWU3-_HZ_8UHDtoLb_AMkkdR-QwXdp_qugDIrw
 
 ### test server 
 GET {{server}}
 
-### GET all content
-GET {{server}}/contents
-
 ### GET byId contents
 GET {{server}}/contents/2
+{{barrer}}
+
+### GET all content
+GET {{server}}/contents
+{{barrer}}
+
+### postContent
+POST {{server}}/contents
+{{barrer}}
+Content-Type: application/json
+
+{
+    "id": 70,
+    "content": "test",
+    "choix": 1,
+    "réponse": 0,
+    "type": "barique",
+    "difficulté": 1
+}
+
+### putContent
+PUT {{server}}/contents/70
+{{barrer}}
+Content-Type: application/json
+
+{
+    "content": "testfksdryjj",
+    "choix": 1,
+    "réponse": 0,
+    "type": "bare",
+    "difficulté": 1
+}
+###Delete userbyId
+DELETE {{server}}/contents/70
+{{barrer}}
+
+###Delete userbyId
+DELETE {{server}}/users/2
 
 ### GET all users
 GET {{server}}/users
@@ -15,23 +51,33 @@ GET {{server}}/users
 ### GET byId users
 GET {{server}}/users/4
 
-###POST users
-POST {{server}}/users
-Content-Type: application/json
-
-{
-    "username": "r",
-    "password": 2468
-}
-
 ###Put user
 Put {{server}}/users/1
 Content-Type: application/json
 
 {
-    "username": "jojlmgl",
-    "password": 2468
+    "username": "jojo27",
+    "password": 4256
 }
 
 ###Delete userbyId
 DELETE {{server}}/users/2
+
+### postUserRegister
+POST {{server}}/users/register
+Content-Type: application/json
+
+{
+    "username": "jojo27",
+    "password": "589645644"
+}
+
+### postUserLogin
+POST {{server}}/users/login
+Content-Type: application/json
+
+{
+    "username": "jojo6",
+    "password": "589645644"
+}
+

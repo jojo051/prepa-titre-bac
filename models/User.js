@@ -22,4 +22,16 @@ User.delete = (userId, callback) => {
   db.query('DELETE FROM user WHERE id = ?',[userId], callback);
 };
 
+User.register = (username, callback) =>{
+  db.query('SELECT * FROM user where username = ?',[username], callback);
+}
+
+User.registervalid = ( formData, callback) =>{
+  db.query('INSERT INTO user SET ?',[formData], callback);
+}
+
+User.login =(username, callback)=>{
+  db.query('SELECT password FROM user WHERE username = ?',username, callback);
+}
+
 module.exports = User;

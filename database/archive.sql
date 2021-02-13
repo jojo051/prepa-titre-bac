@@ -173,8 +173,6 @@ INSERT INTO category_content (`category_id`, `content_id`) VALUES
 (1,49),
 (1,50);
 
-INSERT INTO user (`username`, `password`) VALUES ("jojo", 123456789);
-
 INSERT INTO bottle_box (`box_id`, `bottle_id`) VALUES (1,1),(1,2),(1,3);
 
 INSERT INTO box_category (`box_id`, `category_id`) VALUES (1,1),(1,2);

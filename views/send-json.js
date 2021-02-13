@@ -41,7 +41,25 @@ const sendDeleted = (req, res) =>{
   } else 
     res.send("Aucune modification");
 }
+const sendregister = (req, res)=>{
+  const { data } = req;
+  const {formData, results} = data
+  const {username} = formData
+  if ( data == null ){
+    res.sendStatus(404);
+  } else if (data.results.affectedRows > 0) {
+    res.status(201).json( {username, password:null, id:results.insertId} )
+  } else 
+  res.send("Aucune modification");
+  }
 
+  const sendLoging = (req, res)=>{
+    const { data } = req;
+    console.log(data)
+    res.json(
+      data
+      );
+  }
 
 module.exports = {
   sendIfExists,
@@ -49,4 +67,6 @@ module.exports = {
   sendPutModified,
   sendPost,
   sendDeleted,
+  sendregister,
+  sendLoging,
 }

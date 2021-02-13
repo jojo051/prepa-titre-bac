@@ -26,6 +26,52 @@ const findContentById = (req, res, next) => {
   })
 };
 
+const postContent = (req, res, next) => {
+  const { formData } = req
+  Content.post(formData, (err, results) =>{
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else {
+      req.data = results;
+      next();
+    }
+  })
+}
+
+const putContent = (req, res, next) => {
+  const { formData, contentId } = req
+  Content.put( formData, contentId, (err, results) =>{
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else {
+      req.data = results;
+     
+      next();
+    }
+  })
+}
+
+const deleteContent = (req, res, next) => {
+  Content.delete(req.contentId, (err, results) =>{
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else {
+      req.data = results;
+      next();
+    }
+  })
+}
+
 module.exports = {
-  findContentById, getAllContents
+  findContentById, 
+  getAllContents,
+  postContent,
+  putContent,
+  deleteContent
 }
