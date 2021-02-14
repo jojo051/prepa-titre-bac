@@ -1,4 +1,4 @@
-const Categorie = require('../models/Category');
+const Category = require('../models/Category');
 
 const getAllCategories = (req, res, next) => {
   Category.getAll((err, results) => {
@@ -68,10 +68,26 @@ const deleteCategory = (req, res, next) => {
   })
 }
 
+const getCategoriesContent = (req, res, next) => {
+  const { formData, categoryId, difficultiesId } = req
+  Category.get( formData, categoryId, difficultiesId,(err, results) =>{
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else {
+      req.data = results;
+     
+      next();
+    }
+  })
+}
+
 module.exports = {
   getAllCategories, 
   findCategoryById,
   postCategory,
   putCategory,
-  deleteCategory
+  deleteCategory,
+  getCategoriesContent
 }

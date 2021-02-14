@@ -57,20 +57,22 @@ const postUserRegister = (req, res, next) =>{
           console.log(err);
           res.status(500).send("Erreur lors de l'authentification");
           } else if (results[0] == null) {
-            res.status(400).send("Cet utilisateur n'existe pas");
+            res.status(400).json({message:"Cet utilisateur n'existe pas"});
             }
             else {
             const hash = results[0].password;
             bcrypt.compare(password, hash, function(err, same) {
-              if(same) {
+              if(same === true) {
                 const token = createToken(username)
                 req.data = {
                   username,
                   token,
                   }; 
+                  next();
+                }else {
+                  res.status(400).json({message:"connexion refusée"});
                 }
-                next();
-              })   
+              }) 
             }
         
       })

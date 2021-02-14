@@ -1,6 +1,13 @@
 const extractBoxCategory = (req, res, next) => {
   req.formData = req.body;
   next();
+}
+const extractCategoryIdContentDifficultiesId = (req, res, next) => {
+  req.formData = req.query.type
+  req.categoryId = parseInt(req.params.categoryId);
+  req.difficultiesId = parseInt(req.params.difficultiesId);
+  next();
+};
 
 const extractCategoryId = (req, res, next) => {
   req.categoryId = parseInt(req.params.categoryId);
@@ -72,4 +79,5 @@ module.exports = {
   extractboxId,
   extractCategoryId,
   extractBoxCategory,
+  extractCategoryIdContentDifficultiesId
 };

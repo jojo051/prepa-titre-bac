@@ -19,7 +19,7 @@ const { sendIfExists,
   send, 
   sendDeleted,
   sendregister,
-  sendLoging 
+  sendLoging,
 } = require('../views/send-json');
 
 usersRouter.get('/', getAllUsers, send);

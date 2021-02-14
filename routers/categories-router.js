@@ -5,6 +5,7 @@ const {
   extractCategoryId,
   extractData,
   extractDataId,
+  extractCategoryIdContentDifficultiesId,
 } = require('../controllers/extract-controller');
 
 const { 
@@ -12,7 +13,8 @@ const {
     findCategoryById,
     postCategory,
     putCategory,
-    deleteCategory 
+    deleteCategory,
+    getCategoriesContent
 } = require('../controllers/categories-controller');
 
 const { 
@@ -28,4 +30,5 @@ categoriesRouter.get('/:categoryId',extractCategoryId, findCategoryById, sendIfE
 categoriesRouter.delete('/:categoryId', findCategoryById, deleteCategory, sendDeleted);
 categoriesRouter.post('/',extractData, postCategory, sendPost);
 categoriesRouter.put('/:categoryId',extractDataId,putCategory,sendPutModified);
+categoriesRouter.get('/:categoryId/contents/difficulties/:difficultiesId',extractCategoryIdContentDifficultiesId,getCategoriesContent,send);
 module.exports = categoriesRouter;

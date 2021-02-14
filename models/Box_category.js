@@ -6,4 +6,4 @@ Box_category.get = ( formData ,callback) => {
     Box_category.query(sqlComande, [req.body.box, req.body.category],callback);
 }
 
-module.exports = Box;
+module.exports = Box_category;
